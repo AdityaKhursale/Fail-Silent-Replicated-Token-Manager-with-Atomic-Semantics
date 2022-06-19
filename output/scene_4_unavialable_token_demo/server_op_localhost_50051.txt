@@ -1,0 +1,31 @@
+
+Server started on host:port  localhost 50051 
+
+
+** Request Received --> Request Number:  1 , Request:  {Action: create, Id: 1}
+Processed request number  1 , Token State Now:  {id: 1, name: , domain: {low: 0, mid: 0, high: 0}, state: {partial_val: 0, final_val: 0}, writer: localhost:50051, readers: [localhost:50052 localhost:50053 localhost:50054 localhost:50055 localhost:50056 localhost:50051]}
+Tokenstore contains:  [1]
+
+** Request Received --> Request Number:  2 , Request:  {Action: create, Id: 2}
+Processed request number  2 , Token State Now:  {id: 2, name: , domain: {low: 0, mid: 0, high: 0}, state: {partial_val: 0, final_val: 0}, writer: localhost:50052, readers: [localhost:50051 localhost:50053 localhost:50054 localhost:50055 localhost:50056]}
+Tokenstore contains:  [2 1]
+
+** Request Received --> Request Number:  3 , Request:  {Action: create, Id: 3}
+Processed request number  3 , Token State Now:  {id: 3, name: , domain: {low: 0, mid: 0, high: 0}, state: {partial_val: 0, final_val: 0}, writer: localhost:50051, readers: [localhost:50052 localhost:50054 localhost:50055 localhost:50056]}
+Tokenstore contains:  [2 3 1]
+
+** Request Received --> Request Number:  4 , Request:  {Action: write, Id: 3, Name: abc, Low: 1, Mid: 5, High: 14}
+	Calculated state of the token, state: {partial_val: 2207634929195471568  final_val: 1315358797943274660 }
+	Brodcasting write requests
+		Broadcast request sent to localhost:50052
+		Broadcast request sent to localhost:50054
+		Broadcast request sent to localhost:50055
+		Broadcast request sent to localhost:50056
+		localhost:50056's response:  true
+		localhost:50054's response:  true
+		localhost:50055's response:  true
+	Got the majority!
+	Write success on  3 servers
+Processed request number  4 , Token State Now:  {id: 3, name: abc, domain: {low: 1, mid: 5, high: 14}, state: {partial_val: 2207634929195471568, final_val: 1315358797943274660}, writer: localhost:50051, readers: [localhost:50052 localhost:50054 localhost:50055 localhost:50056]}
+Tokenstore contains:  [1 2 3]
+		localhost:50052's response:  true

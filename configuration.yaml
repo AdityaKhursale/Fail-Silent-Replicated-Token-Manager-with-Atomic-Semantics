@@ -1,0 +1,12 @@
+- token: 1
+  writer: "localhost:50051"
+  readers: ["localhost:50052", "localhost:50053", "localhost:50054",
+         "localhost:50055", "localhost:50056", "localhost:50051"]
+- token: 2
+  writer: "localhost:50052"
+  readers: ["localhost:50051", "localhost:50053", "localhost:50054",
+         "localhost:50055", "localhost:50056"]
+- token: 3
+  writer: "localhost:50051"
+  readers: ["localhost:50052", "localhost:50054",
+         "localhost:50055", "localhost:50056"]

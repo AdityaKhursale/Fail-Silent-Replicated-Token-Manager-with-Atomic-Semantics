@@ -1,0 +1,63 @@
+syntax="proto3";
+package token;
+
+option go_package = "./";
+
+message Domain {
+    uint64 low  = 1;
+    uint64 mid  = 2;
+    uint64 high = 3; 
+}
+
+message State {
+    uint64 partialval = 1;
+    uint64 finalval = 2;
+} 
+
+message Request {
+    string id = 1;
+    string name = 2;
+    Domain domain = 3;
+    State token_state = 4;
+    string writer = 5;
+    repeated string readers = 6;
+    string requestip = 7;
+    string requestport = 8;
+}
+
+message Response {
+    string body = 1;
+}
+
+message WriteBrodcastResponse {
+    bool status = 1;
+}
+
+message WriteBroadcastRequest {
+    string tokenid = 1;
+    string timestamp = 2;
+    Domain domain = 3;
+    State token_state = 4;
+    bool isreading = 5;
+}
+
+message ReadBroadcastRequest {
+    string tokenid = 1;
+}
+
+message ReadBroadcastResponse {
+    string tokenid = 1;
+    Domain domain = 3;
+    State token_state = 4;
+    string timestamp = 5;
+    bool status = 6;
+}
+
+service TokenService {
+    rpc Create(Request) returns (Response) {}
+    rpc Drop(Request) returns (Response) {}
+    rpc Write(Request) returns (Response) {}
+    rpc Read(Request) returns (Response) {}
+    rpc WriteBroadcast(WriteBroadcastRequest) returns (WriteBrodcastResponse) {}
+    rpc ReadBroadcast(ReadBroadcastRequest) returns (ReadBroadcastResponse) {}
+}

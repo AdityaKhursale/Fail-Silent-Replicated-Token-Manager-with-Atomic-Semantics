@@ -1,0 +1,55 @@
+***Reading YAML
+
+***Launching all servers
+	Launching server on localhost:50056
+	Command:  go run server.go -host localhost -port 50056 > output/server_op_localhost_50056.txt 2>&1 &
+	Launching server on localhost:50051
+	Command:  go run server.go -host localhost -port 50051 > output/server_op_localhost_50051.txt 2>&1 &
+	Launching server on localhost:50052
+	Command:  go run server.go -host localhost -port 50052 > output/server_op_localhost_50052.txt 2>&1 &
+	Launching server on localhost:50053
+	Command:  go run server.go -host localhost -port 50053 > output/server_op_localhost_50053.txt 2>&1 &
+	Launching server on localhost:50054
+	Command:  go run server.go -host localhost -port 50054 > output/server_op_localhost_50054.txt 2>&1 &
+	Launching server on localhost:50055
+	Command:  go run server.go -host localhost -port 50055 > output/server_op_localhost_50055.txt 2>&1 &
+
+***Setting up all tokens with replicas
+	Command:  go run client.go -create -id 3 -host localhost -port 50051 -writer localhost:50051 -readers localhost:50052 localhost:50054 localhost:50055 localhost:50056
+	Server Response: Token created with id: 3
+	Command:  go run client.go -create -id 3 -host localhost -port 50052 -writer localhost:50051 -readers localhost:50052 localhost:50054 localhost:50055 localhost:50056
+	Server Response: Token created with id: 3
+	Command:  go run client.go -create -id 3 -host localhost -port 50054 -writer localhost:50051 -readers localhost:50052 localhost:50054 localhost:50055 localhost:50056
+	Server Response: Token created with id: 3
+	Command:  go run client.go -create -id 3 -host localhost -port 50055 -writer localhost:50051 -readers localhost:50052 localhost:50054 localhost:50055 localhost:50056
+	Server Response: Token created with id: 3
+	Command:  go run client.go -create -id 3 -host localhost -port 50056 -writer localhost:50051 -readers localhost:50052 localhost:50054 localhost:50055 localhost:50056
+	Server Response: Token created with id: 3
+	Command:  go run client.go -create -id 1 -host localhost -port 50051 -writer localhost:50051 -readers localhost:50052 localhost:50053 localhost:50054 localhost:50055 localhost:50056 localhost:50051
+	Server Response: Token created with id: 1
+	Command:  go run client.go -create -id 1 -host localhost -port 50052 -writer localhost:50051 -readers localhost:50052 localhost:50053 localhost:50054 localhost:50055 localhost:50056 localhost:50051
+	Server Response: Token created with id: 1
+	Command:  go run client.go -create -id 1 -host localhost -port 50053 -writer localhost:50051 -readers localhost:50052 localhost:50053 localhost:50054 localhost:50055 localhost:50056 localhost:50051
+	Server Response: Token created with id: 1
+	Command:  go run client.go -create -id 1 -host localhost -port 50054 -writer localhost:50051 -readers localhost:50052 localhost:50053 localhost:50054 localhost:50055 localhost:50056 localhost:50051
+	Server Response: Token created with id: 1
+	Command:  go run client.go -create -id 1 -host localhost -port 50055 -writer localhost:50051 -readers localhost:50052 localhost:50053 localhost:50054 localhost:50055 localhost:50056 localhost:50051
+	Server Response: Token created with id: 1
+	Command:  go run client.go -create -id 1 -host localhost -port 50056 -writer localhost:50051 -readers localhost:50052 localhost:50053 localhost:50054 localhost:50055 localhost:50056 localhost:50051
+	Server Response: Token created with id: 1
+	Command:  go run client.go -create -id 2 -host localhost -port 50052 -writer localhost:50052 -readers localhost:50051 localhost:50053 localhost:50054 localhost:50055 localhost:50056
+	Server Response: Token created with id: 2
+	Command:  go run client.go -create -id 2 -host localhost -port 50051 -writer localhost:50052 -readers localhost:50051 localhost:50053 localhost:50054 localhost:50055 localhost:50056
+	Server Response: Token created with id: 2
+	Command:  go run client.go -create -id 2 -host localhost -port 50053 -writer localhost:50052 -readers localhost:50051 localhost:50053 localhost:50054 localhost:50055 localhost:50056
+	Server Response: Token created with id: 2
+	Command:  go run client.go -create -id 2 -host localhost -port 50054 -writer localhost:50052 -readers localhost:50051 localhost:50053 localhost:50054 localhost:50055 localhost:50056
+	Server Response: Token created with id: 2
+	Command:  go run client.go -create -id 2 -host localhost -port 50055 -writer localhost:50052 -readers localhost:50051 localhost:50053 localhost:50054 localhost:50055 localhost:50056
+	Server Response: Token created with id: 2
+	Command:  go run client.go -create -id 2 -host localhost -port 50056 -writer localhost:50052 -readers localhost:50051 localhost:50053 localhost:50054 localhost:50055 localhost:50056
+	Server Response: Token created with id: 2
+Intial replication is complete!
+
+***System is up and available to test read and write requests
+	Press Ctrl + C to close all servers
